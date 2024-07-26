@@ -1,23 +1,16 @@
-name: Danger Swift
-
-on: [pull_request]
-
+name: Danger
+on:
+  pull_request:
+    branches:
+      - '**'
+      - '!master'
 jobs:
   danger:
-    name: Danger
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@master
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3.4'
-          architecture: 'x64'
-      - name: Run Danger
-        run: |
-          gem install danger danger-swiftlint
-      - name: Run Danger
+      - uses: actions/checkout@v3
+
+      - name: Danger
+        uses: 417-72KI/danger-swiftlint@v5.9 # Xcode15系
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: danger
