@@ -6,7 +6,7 @@ on:
       - '!master'
 jobs:
   danger:
-    runs-on: ubuntu-latest
+    runs-on: WEBSYSTEM-MAC16
     steps:
       - uses: actions/checkout@v3
 
