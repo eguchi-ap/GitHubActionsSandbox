@@ -5,6 +5,12 @@ on:
       - '**'
       - '!master'
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  statuses: write
+
 jobs:
   danger:
     runs-on: macos-latest
@@ -23,6 +29,7 @@ jobs:
 
       - name: Install Danger Swift
         run: |
+          brew install swiftlint
           brew tap danger/tap
           brew install danger/tap/danger-swift
 
