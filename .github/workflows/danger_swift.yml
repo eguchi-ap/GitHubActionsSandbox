@@ -34,6 +34,6 @@ jobs:
           brew install danger/tap/danger-swift
 
       - name: Run Danger Swift
-        run: danger-swift ci
+        run: danger-swift ci --fail-on-errors
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
