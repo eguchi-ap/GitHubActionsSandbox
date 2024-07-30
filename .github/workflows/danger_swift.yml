@@ -22,15 +22,26 @@ jobs:
         id: cache-homebrew
         uses: actions/cache@v3
         with:
-          path: /Users/${{ runner.username }}/Library/Caches/Homebrew
+          path: |
+            /usr/local/Homebrew/Library/Homebrew
+            /Users/${{ runner.username }}/Library/Caches/Homebrew
           key: homebrew-${{ runner.os }}-${{ hashFiles('**/*.rb') }}
           restore-keys: |
             homebrew-${{ runner.os }}-
 
+      - name: Cache SwiftLint
+        id: cache-swiftlint
+        uses: actions/cache@v3
+        with:
+          path: /usr/local/Cellar/swiftlint
+          key: swiftlint-${{ runner.os }}-${{ hashFiles('**/*.swift') }}
+          restore-keys: |
+            swiftlint-${{ runner.os }}-
+
       - name: Install Danger Swift
         run: |
-          brew install swiftlint
           brew tap danger/tap
+          brew install swiftlint
           brew install danger/tap/danger-swift
 
       - name: Run Danger Swift
