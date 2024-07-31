@@ -22,10 +22,11 @@ jobs:
         id: cache-homebrew
         uses: actions/cache@v3
         with:
-          path: /Users/${{ runner.username }}/Library/Caches/Homebrew
-          key: homebrew-${{ runner.os }}-${{ hashFiles('**/*.rb') }}
-          restore-keys: |
-            homebrew-${{ runner.os }}-
+          path: |
+            ~/Library/Caches/Homebrew/foo--*
+            ~/Library/Caches/Homebrew/downloads/*--foo-*
+          key: brew-${{ hashFiles('.github/brew-formulae') }}
+          restore-keys: homebrew-
 
       - name: Install Danger Swift
         run: |
