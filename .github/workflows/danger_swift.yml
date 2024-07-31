@@ -18,15 +18,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Cache Homebrew
-        id: cache-homebrew
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/Library/Caches/Homebrew/foo--*
-            ~/Library/Caches/Homebrew/downloads/*--foo-*
-          key: brew-${{ hashFiles('.github/brew-formulae') }}
-          restore-keys: homebrew-
+#      - name: Cache Homebrew
+#        id: cache-homebrew
+#        uses: actions/cache@v3
+#        with:
+#          path: |
+#            ~/Library/Caches/Homebrew/foo--*
+#            ~/Library/Caches/Homebrew/downloads/*--foo-*
+#          key: brew-${{ hashFiles('.github/brew-formulae') }}
+#          restore-keys: homebrew-
 
       - name: Install Danger Swift
         run: |
