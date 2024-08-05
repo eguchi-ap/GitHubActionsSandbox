@@ -1,3 +1,5 @@
+require 'psych'
+
 # Sometimes it's a README fix, or something like that - which isn't relevant for
 # including in a project's CHANGELOG for example
 declared_trivial = github.pr_title.include? "#trivial"
@@ -15,8 +17,10 @@ fail("fit left in tests") if `grep -r fit specs/ `.length > 1
 # 修正範囲外をチェック対象から外します。
 github.dismiss_out_of_range_messages
 
-require 'psych'
-Psych.safe_load(File.read('Dangerfile'), aliases: true)
+dangerfile_content = File.read(__FILE__)
+parsed_content = Psych.safe_load(dangerfile_content, aliases: true)
+
+eval(parsed_content)
 
 # Swiftlint
 swiftlint.config_file = '.swiftlint.yml'
