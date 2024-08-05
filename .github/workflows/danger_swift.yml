@@ -14,11 +14,11 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@master
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.x'
+          ruby-version: 2.6.10
 
       - name: cache bundle
         uses: actions/cache@v2
