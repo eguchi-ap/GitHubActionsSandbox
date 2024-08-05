@@ -1,11 +1,9 @@
 name: Danger Swift
-on:
-  pull_request:
-    branches:
-      - '**'
-      - '!master'
+
+on: [pull_request]
 
 permissions:
+  id-token: write
   contents: read
   pull-requests: write
   issues: write
@@ -13,28 +11,21 @@ permissions:
 
 jobs:
   danger:
+    name: Danger
     runs-on: macos-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
 
-#      - name: Cache Homebrew
-#        id: cache-homebrew
-#        uses: actions/cache@v3
-#        with:
-#          path: |
-#            ~/Library/Caches/Homebrew/foo--*
-#            ~/Library/Caches/Homebrew/downloads/*--foo-*
-#          key: brew-${{ hashFiles('.github/brew-formulae') }}
-#          restore-keys: homebrew-
+      - run: bundle install
 
-      - name: Install Danger Swift
-        run: |
-          brew install swiftlint
-          brew tap danger/tap
-          brew install danger/tap/danger-swift
-
-      - name: Run Danger Swift
-        run: danger-swift ci --fail-on-errors
+      - name: Run Danger
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          bundle exec danger
