@@ -32,8 +32,12 @@ GEM
       logger
     faraday-http-cache (2.5.1)
       faraday (>= 0.8)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
     faraday-net_http (3.1.1)
       net-http
+    faraday-retry (2.2.1)
+      faraday (~> 2.0)
     git (1.19.1)
       addressable (~> 2.8)
       rchardet (~> 1.8)
@@ -42,6 +46,7 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     logger (1.6.0)
+    multipart-post (2.4.1)
     nap (1.1.0)
     net-http (0.4.1)
       uri
@@ -71,6 +76,8 @@ PLATFORMS
 DEPENDENCIES
   danger
   danger-swiftlint
+  faraday-multipart
+  faraday-retry
 
 BUNDLED WITH
    2.5.17
