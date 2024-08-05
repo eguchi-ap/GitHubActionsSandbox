@@ -3,6 +3,7 @@ name: Danger Swift
 on: [pull_request]
 
 permissions:
+  id-token: write
   contents: read
   pull-requests: write
   issues: write
