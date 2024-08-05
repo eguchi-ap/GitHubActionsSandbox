@@ -35,7 +35,6 @@
 		98E5FAD02C53337200A44C35 = {
 			isa = PBXGroup;
 			children = (
-				98E5FAEA2C53367C00A44C35 /* New Group */,
 				98E5FADB2C53337200A44C35 /* GitHubActionsSandbox */,
 				98E5FADA2C53337200A44C35 /* Products */,
 			);
@@ -66,13 +65,6 @@
 				98E5FAE32C53337300A44C35 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		98E5FAEA2C53367C00A44C35 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
