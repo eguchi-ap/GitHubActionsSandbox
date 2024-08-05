@@ -2,11 +2,11 @@ name: Danger Swift
 
 on: [pull_request]
 
-#permissions:
-#  contents: read
-#  pull-requests: write
-#  issues: write
-#  statuses: write
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  statuses: write
 
 jobs:
   danger:
